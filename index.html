@@ -3,181 +3,212 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phyo Wai Thaung | Generative AI for Work & Research Portfolio</title>
+  <title>Phyo Wai Thaung – Generative AI for Work & Research Portfolio</title>
   <style>
-    :root {
-      --primary: #23395d;
-      --accent: #2e7d32; /* dark green accent */
-      --light: #f5f7fa;
-      --dark: #1a1a1a;
+    :root{
+      --accent:#0b3d0b; /* dark green */
     }
-    *{box-sizing:border-box;margin:0;padding:0;}
+
+    /* Base styles */
+    *{box-sizing:border-box;margin:0;padding:0}
     body{
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Helvetica Neue", Arial, sans-serif;
       line-height:1.6;
-      color:var(--dark);
-      background:var(--light);
+      color:#333;
+      background:#fdfdfd;
     }
-    h1,h2,h3{font-family:"Georgia", Times, serif;}
+    h1,h2,h3,h4{
+      font-family:"Georgia","Times New Roman",serif;
+      color:var(--accent);
+      margin-bottom:.6rem;
+    }
+    /* extra space before sub-headings */
+    h3,h4{margin-top:2rem;}
 
-    /* ===== Layout ===== */
-    .wrapper{display:flex;min-height:100vh;}
-    aside.sidebar{
-      flex:0 0 260px;
-      background:var(--primary);
-      color:#fff;
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout helpers */
+    .container{
+      max-width:960px;
+      margin:0 auto;
       padding:2rem 1rem;
+    }
+    /* Navigation / Header */
+    header{
+      background:var(--accent);
+      color:#fff;
+    }
+    header .container{
       display:flex;
-      flex-direction:column;
+      flex-wrap:wrap;
       align-items:center;
+      justify-content:space-between;
+      gap:1.5rem;
     }
-    .profile-pic{
-      width:140px;height:140px;
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:1.5rem;
+    }
+    nav ul li a{
+      color:#fff;
+      font-weight:600;
+      transition:opacity .2s ease;
+    }
+    nav ul li a:hover{opacity:.7;}
+
+    /* Hero (profile area) */
+    .hero{
+      display:flex;
+      align-items:center;
+      gap:1.5rem;
+      padding:2rem 0;
+      flex:1 1 auto;
+    }
+    .hero img{
+      width:140px;
+      height:140px;
+      object-fit:cover;
       border-radius:50%;
-      background:#fff url('https://raw.githubusercontent.com/phyowaithaung/graph_repository/main/Picture_PWT.png?raw=true') center/cover no-repeat;
-      margin-bottom:1.5rem;
+      border:4px solid #fff;
+      margin:0;
     }
-    .sidebar h1{font-size:1.4rem;text-align:center;margin-bottom:.3rem;}
-    .sidebar h2{font-size:.9rem;font-weight:normal;text-transform:uppercase;letter-spacing:1px;text-align:center;margin-bottom:2rem;}
+    .hero-text h1{
+      font-size:2.4rem;
+      color:#fff;
+      margin-bottom:.4rem;
+    }
+    .hero-text p{color:#e4e4e4;font-size:1.05rem;}
 
-    .side-nav ul{list-style:none;width:100%;}
-    .side-nav li{margin:.5rem 0;}
-    .side-nav a{color:#fff;text-decoration:none;font-weight:bold;display:block;padding:.3rem 1rem;border-left:4px solid transparent;}
-    .side-nav a:hover,.side-nav a:focus{border-color:var(--accent);background:rgba(255,255,255,0.1);}    
+    /* Sections */
+    section{padding:3rem 0;border-bottom:1px solid #eee}
+    .skills,
+    .modules{
+      list-style:disc inside;
+      margin-top:1rem;
+      columns:2;
+      column-gap:2rem;
+    }
+    .submissions ul{list-style:none;margin-top:1rem}
+    .submissions li{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:.4rem 0;
+      border-bottom:1px dashed #ccc;
+    }
+    .submissions li a{text-align:right;}
 
-    main.content{flex:1;padding:2.5rem 2rem;max-width:1200px;margin:auto;}
-    main.content section{margin-bottom:3rem;}
-    main.content section h2{color:var(--primary);margin-bottom:1rem;}
+    /* spacing before skills heading */
+    .skills-heading{margin-top:1.5rem;}
 
-    /* About Me */
-    .about-me-content p{margin-bottom:.8rem;}
-    .experience,.education{margin-bottom:1.5rem;}
-
-    /* About Course */
-    #about-course h3{margin-top:2rem; /* extra space requested */}
-
-    .course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem;}
-    .module{background:#fff;border-left:4px solid var(--accent);padding:1rem;box-shadow:0 1px 4px rgba(0,0,0,0.05);} 
-    .module h3{font-size:1rem;margin-bottom:.5rem;color:var(--primary);} 
-    .module p{font-size:.9rem;}
-
-    /* Weekly list */
-    .weekly ul{list-style:none;padding-left:0;}
-    .weekly li{background:#fff;margin-bottom:.5rem;padding:.8rem;border-left:4px solid var(--primary);box-shadow:0 1px 4px rgba(0,0,0,0.05);}  
-    .weekly a{text-decoration:none;color:var(--primary);}  
-
-    footer{background:var(--primary);color:#fff;text-align:center;padding:1rem;font-size:.8rem;}
-
-    @media (max-width:700px){
-      .wrapper{flex-direction:column;}
-      aside.sidebar{flex:none;width:100%;flex-direction:row;justify-content:center;gap:1.5rem;}
-      .profile-pic{width:100px;height:100px;margin-bottom:0;}
-      .sidebar h1,.sidebar h2{text-align:left;}
-      .side-nav{display:none;}
+    /* Footer */
+    footer{
+      background:#f1f1f1;
+      text-align:center;
+      padding:1rem;
+      font-size:.9rem;
     }
 
-    @media (prefers-color-scheme: dark){
-      body{background:#121212;color:#e0e0e0;}
-      aside.sidebar,footer{background:#0d47a1;}
-      .module,.weekly li{background:#1e1e1e;}
+    /* Responsive tweaks */
+    @media(max-width:600px){
+      header .container{flex-direction:column;align-items:flex-start;}
+      .hero{flex-direction:column;text-align:center;align-items:center;}
+      nav ul{flex-direction:column;gap:.8rem}
+      .skills, .modules{columns:1}
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <aside class="sidebar">
-      <div class="profile-pic" aria-label="Profile photo of Phyo Wai Thaung"></div>
-      <h1>Phyo Wai Thaung</h1>
-      <h2>Public Health &amp; AI Enthusiast</h2>
-
-      <nav class="side-nav" aria-label="Section navigation">
+  <header>
+    <div class="container">
+      <div class="hero">
+        <img src="https://github.com/phyowaithaung/graph_repository/blob/main/Picture_PWT.png?raw=true" alt="Phyo Wai Thaung profile photo">
+        <div class="hero-text">
+          <h1>Phyo Wai Thaung</h1>
+          <p>Public health & humanitarian professional exploring Generative AI for productivity</p>
+        </div>
+      </div>
+      <nav>
         <ul>
           <li><a href="#about-me">About Me</a></li>
           <li><a href="#about-course">About the Course</a></li>
-          <li><a href="#weekly">Weekly Submissions</a></li>
+          <li><a href="#weekly-submissions">My Weekly Submissions</a></li>
         </ul>
       </nav>
-    </aside>
+    </div>
+  </header>
 
-    <main class="content">
-      <section id="about-me">
-        <h2>About Me</h2>
-        <div class="about-me-content">
-          <p>I am a humanitarian and public health professional specializing in monitoring, evaluation, research and learning (MERL). My work focuses on improving the lives of marginalized communities through data‑driven decision‑making and strategic information systems.</p>
+  <!-- About Me -->
+  <section id="about-me">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I am a humanitarian and public-health specialist with over a decade of experience leading monitoring, evaluation, research & learning initiatives across Southeast Asia. Currently, I serve as <em>Strategic Information Lead</em> at Community Partners International, empowering community-based organizations along the Thai-Myanmar border through data-driven decision-making.</p>
+      <p>I hold a Master of Public Health from the National University of Singapore and have managed multidisciplinary teams for UN agencies, INGOs and USAID-funded programs. My professional focus is on leveraging evidence and technology to improve health outcomes for marginalized populations.</p>
+      <p class="skills-heading"><strong>Key digital & analytical skills:</strong></p>
+      <ul class="skills">
+        <li>Data Visualization (Tableau, Power BI, Looker Studio)</li>
+        <li>Statistical Analysis (R, SPSS, STATA)</li>
+        <li>GIS & Mapping (QGIS)</li>
+        <li>SQL Database Management</li>
+        <li>No-code Automation Platforms</li>
+        <li>Proposal & Report Writing</li>
+      </ul>
+      <p>Connect with me on <a href="https://www.linkedin.com/in/phyo-wai-thaung-70a1a1113" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+    </div>
+  </section>
 
-          <div class="experience">
-            <h3>Key Experience</h3>
-            <ul>
-              <li>Strategic Information Lead — USAID LEARN Project, Community Partners International (2022‑present)</li>
-              <li>M&amp;E Manager — Health System Strengthening Project, UNOPS (2021‑2022)</li>
-              <li>M&amp;E Senior Officer — Multi‑donor pooled fund, UNOPS (2019‑2020)</li>
-              <li>Project Medical Coordinator — Médecins Sans Frontières (2013‑2016)</li>
-            </ul>
-          </div>
+  <!-- About the Course -->
+  <section id="about-course">
+    <div class="container">
+      <h2>About the Course</h2>
+      <h3>Generative AI for Work & Research Productivity</h3>
+      <p>This <strong>8-week live online certification</strong> explores no-code AI tools that streamline data analysis, content creation, knowledge management and routine workflows. Through hands-on projects and interactive workshops, participants design AI solutions that boost individual and team productivity.</p>
+      <p><strong>Next start date:</strong> <time datetime="2025-05-09">May 9 2025</time> &nbsp;|&nbsp; <strong>Workshops:</strong> Fridays 3&nbsp;pm GMT or Sundays 5&nbsp;pm GMT</p>
 
-          <div class="education">
-            <h3>Education</h3>
-            <ul>
-              <li>Master of Public Health, National University of Singapore (2019)</li>
-              <li>MBBS, University of Medicine 1, Yangon (2009)</li>
-            </ul>
-          </div>
+      <h4>Learning Outcomes</h4>
+      <ul class="modules">
+        <li>Automate documents, spreadsheets & data tasks</li>
+        <li>Create professional content and visuals with AI</li>
+        <li>Build custom chatbots & RAG systems</li>
+        <li>Design end-to-end AI workflows for task automation</li>
+        <li>Conduct AI-powered literature reviews & text analysis</li>
+        <li>Complete a capstone project and showcase</li>
+      </ul>
 
-          <p>Connect with me on <a href="https://www.linkedin.com/in/phyo-wai-thaung-70a1a1113" target="_blank" rel="noopener">LinkedIn</a>.</p>
-        </div>
-      </section>
+      <h4>Course Modules</h4>
+      <ul class="modules">
+        <li>Documents, Presentations & Websites</li>
+        <li>Automated Data Analysis</li>
+        <li>GenAI for Research & Text Analysis</li>
+        <li>Custom GPTs and Chatbots</li>
+        <li>AI Workflows for Task Automation</li>
+        <li>GenAI for Communication & Outreach</li>
+        <li>Capstone Project & Showcase</li>
+      </ul>
+    </div>
+  </section>
 
-      <section id="about-course">
-        <h2>About the Course</h2>
-        <p><strong>Generative AI for Work &amp; Research Productivity</strong> is an 8‑week live online certification that teaches no‑code AI tools to automate data analysis, content creation, knowledge management and routine tasks.</p>
+  <!-- Weekly Submissions -->
+  <section id="weekly-submissions" class="submissions">
+    <div class="container">
+      <h2>My Weekly Submissions</h2>
+      <ul>
+        <li><strong>Week 1 – Prompt Engineering Basics:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 2 – Automating Spreadsheets:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 3 – Data Visualization with Code Interpreter:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 4 – Literature Review Bot:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 5 – Custom GPT Assistant:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 6 – Workflow Automation Build:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 7 – AI Outreach Campaign:</strong> <a href="#">Coming soon</a></li>
+        <li><strong>Week 8 – Capstone Project Demo:</strong> <a href="#">Coming soon</a></li>
+      </ul>
+    </div>
+  </section>
 
-        <ul>
-          <li><strong>Duration:</strong> 8 weeks (next cohort starts May 9, 2025)</li>
-          <li><strong>Workshops:</strong> Friday 15:00 GMT or Sunday 17:00 GMT</li>
-        </ul>
-
-        <h3>Course Outcomes</h3>
-        <ul>
-          <li>Automate document, spreadsheet and data workflows</li>
-          <li>Organize knowledge and accelerate literature reviews</li>
-          <li>Develop custom chatbots and AI‑powered assistants</li>
-          <li>Create professional visuals and presentations with AI</li>
-          <li>Design a hands‑on capstone project to showcase your skills</li>
-        </ul>
-
-        <h3>Modules</h3>
-        <div class="course-grid">
-          <div class="module">
-            <h3>Documents, Presentations &amp; Websites</h3>
-            <p>LLM fundamentals, content generation, no‑code websites, AI presentations</p>
-          </div>
-          <div class="module">
-            <h3>Automated Data Analysis</h3>
-            <p>ChatGPT Code Interpreter, Julius, Windsurf, data visualization</p>
-          </div>
-          <div class="module">
-            <h3>GenAI for Research &amp; Text Analysis</h3>
-            <p>Elicit, LiteRev, summarization, classification, sentiment analysis</p>
-          </div>
-          <div class="module">
-            <h3>Custom GPTs &amp; Chatbots</h3>
-            <p>RAG systems, API integration, Botpress workflows</p>
-          </div>
-          <div class="module">
-            <h3>AI Workflows for Task Automation</h3>
-            <p>Lindy automations, Make.com, Gmail API, task orchestration</p>
-          </div>
-          <div class="module">
-            <h3>GenAI for Communication &amp; Outreach</h3>
-            <p>Ideogram, InVideo, content scheduling, marketing flows</p>
-          </div>
-          <div class="module">
-            <h3>Capstone Project &amp; Showcase</h3>
-            <p>Project scoping, integration, presentation &amp; feedback</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="weekly" class="weekly">
-        <h2>My Weekly Submissions</h2>
-        <
+  <footer>
+    <p>© 2025 Phyo Wai Thaung. All rights reserved.</p>
+  </footer>
+</body>
+</html>
