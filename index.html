@@ -28,6 +28,8 @@
     .submissions li{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px dashed #ccc}
     .submissions li a{text-align:right}
     .skills-heading{margin-top:1.5rem}
+    /* Form responsive */
+    .form-embed iframe{width:100%;max-width:100%;border:0}
     footer{background:#f1f1f1;text-align:center;padding:1rem;font-size:.9rem}
     @media(max-width:600px){header .container{flex-direction:column;align-items:flex-start}.hero{flex-direction:column;text-align:center}.modules,.skills{columns:1}nav ul{flex-direction:column;gap:.8rem}}
   </style>
@@ -47,11 +49,13 @@
           <li><a href="#about-me">About Me</a></li>
           <li><a href="#about-course">About the Course</a></li>
           <li><a href="#weekly-submissions">My Weekly Submissions</a></li>
+          <li><a href="#contact-consultation">Consultation</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- About Me -->
   <section id="about-me">
     <div class="container">
       <h2>About Me</h2>
@@ -70,6 +74,7 @@
     </div>
   </section>
 
+  <!-- About the Course -->
   <section id="about-course">
     <div class="container">
       <h2>About the Course</h2>
@@ -100,6 +105,7 @@
     </div>
   </section>
 
+  <!-- Weekly Submissions -->
   <section id="weekly-submissions" class="submissions">
     <div class="container">
       <h2>My Weekly Submissions</h2>
@@ -113,6 +119,14 @@
         <li><strong>Week 7 – AI Outreach Campaign:</strong> <a href="#">Coming soon</a></li>
         <li><strong>Week 8 – Capstone Project Demo:</strong> <a href="#">Coming soon</a></li>
       </ul>
+    </div>
+  </section>
+
+  <!-- Contact for Consultation -->
+  <section id="contact-consultation" class="form-embed">
+    <div class="container">
+      <h2>Contact for Consultation</h2>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeGNUKVlwA8yfU-Q6pwK2DWCNxfsbU20WHucoL7IfnshYJzKg/viewform?embedded=true" width="640" height="856" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   </section>
 
